@@ -1,0 +1,36 @@
+# Testing
+alias be='bundle exec'
+alias ber='bundle exec rubocop'
+alias plr='parallel_rspec'
+alias lint='cd ember-workflows && jscs app tests && jshint app tests; cd ..'
+
+# Code things
+alias rb='ruby'
+alias c='bin/rails console'
+alias kt='kitchen'
+alias elx='elixir'
+alias cr='crystal'
+
+# My things
+alias r='reup'
+
+# DNS things
+alias pong='ping 8.8.8.8'
+alias dnsflush="sudo killall -HUP mDNSResponder"
+
+# Vagrant things
+alias vg='vagrant'
+
+# Mythunderboltdisplayisntoworking things
+alias camfix='sudo killall VDCAssistant'
+
+# Kills the process using the specifed port
+function killport {
+  lsof -Fp -i tcp:$1 | grep -o '\d*$' | xargs kill -9
+}
+
+# Start the things
+function s {
+  [[ -a Procfile ]] && foreman start;
+  [[ -a ember-cli-build.js ]] && ember s;
+}
